@@ -12,6 +12,6 @@ jobs:
             - run: node -v
             - run: yarn -v
 workflows:
-    build-and-test:
+    build-and-push:
       jobs:
-        - build-and-test
+        - build-and-push
