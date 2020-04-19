@@ -9,8 +9,21 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: node -v
-            - run: yarn -v
+            - run:
+                name: Check versions
+                command: |
+                  node -v
+                  yarn -v
+            - run:
+                name: Install packages
+                command: yarn install
+            - run:
+                name: Create build with webpack
+                command: yarn run build
+            - run:
+                name: Check generated files
+                command: ls -all
+
 workflows:
     build-and-push:
       jobs:
