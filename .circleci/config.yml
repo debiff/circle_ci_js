@@ -28,9 +28,19 @@ jobs:
                   - "6e:81:a8:bf:14:70:cf:b6:e9:95:b8:ec:08:70:cc:ad"
             - run:
                 name: Copy dist repo
-                command: git clone git@github.com:debiff/circle_ci_js_dist.git
-
-
+                command: |
+                git clone git@github.com:debiff/circle_ci_js_dist.git
+                ls circle_ci_js_dist
+            - run:
+                name: Move dist file to dist repo
+                command: mv dist/dist.js circle_ci_js_dist/dist.js
+            - run:
+                name: Push to dist repo
+                command: |
+                  cd circle_ci_js_dist
+                  git add -A .
+                  git commit -m "release: 1.0.0 [skip ci]"
+                  git push
 workflows:
     build-and-push:
       jobs:
