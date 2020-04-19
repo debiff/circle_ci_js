@@ -1,0 +1,1 @@
+export const helloName = (name) => (`Hello ${name}!`)
