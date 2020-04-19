@@ -6,9 +6,6 @@ jobs:
     executor:
       name: node/default
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "6e:81:a8:bf:14:70:cf:b6:e9:95:b8:ec:08:70:cc:ad"
       - checkout
       - node/with-cache:
           steps:
@@ -26,10 +23,12 @@ jobs:
             - run:
                 name: Check generated files
                 command: ls -all
-            - run:
+            - add_ssh_keys:
+                fingerprints:
+                  - "6e:81:a8:bf:14:70:cf:b6:e9:95:b8:ec:08:70:cc:ad"
             - run:
                 name: Copy dist repo
-                command:
+                command: git clone git@github.com:debiff/circle_ci_js_dist.git
 
 
 workflows:
