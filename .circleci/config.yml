@@ -29,8 +29,8 @@ jobs:
             - run:
                 name: Copy dist repo
                 command: |
-                git clone git@github.com:debiff/circle_ci_js_dist.git
-                ls circle_ci_js_dist
+                  git clone git@github.com:debiff/circle_ci_js_dist.git
+                  ls circle_ci_js_dist
             - run:
                 name: Move dist file to dist repo
                 command: mv dist/dist.js circle_ci_js_dist/dist.js
